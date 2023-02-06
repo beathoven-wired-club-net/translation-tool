@@ -21,7 +21,7 @@ import static net.wiredclub.translation.TranslationStatusCode.STATUS_INVALID_ARG
 
 public class CommandLineHelper {
 
-	public static final String DEFAULT_TRANSLATION_DIRECTORY = "frontend/public/translations";
+	public static final String DEFAULT_TRANSLATION_DIRECTORY = "translations";
 	public static final String DEFAULT_SOURCE_LANGUAGE = "en";
 	public static final String DEFAULT_REPOSITORY_PATH = ".";
 
