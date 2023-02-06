@@ -29,7 +29,7 @@ There are two more parameters, but they are only needed to display information.
 ## Use Cases
 
 * Adding a new language
-   1. Create a directory with its country code (e.g. it for itallian) in `frontend/public/translations`
+   1. Create a directory with its country code (e.g. it for itallian) in `translations`
    2. Create the file `main.json` in the directory you just created
    3. The file `main.json` must contain at least `{}`
 
