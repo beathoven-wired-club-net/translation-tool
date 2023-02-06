@@ -8,7 +8,7 @@ each target language(s). The order of existing keys is preserved, but new keys a
 
 The tool is controlled with four parameters. An example call could look like:
 
-`translation-tool -s en -t de -p "frontend/public/translations" -r .`
+`translation-tool -s en -t de -p "translations" -r .`
 
 **If you want to use the tool with standard values, you can start it without parameters.**
 
