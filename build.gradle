@@ -1,0 +1,44 @@
+plugins {
+    id 'application'
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+
+application {
+    getMainClass().set("de.hype.hypeio.translation.TranslationTool")
+}
+
+allprojects {
+    buildscript {
+        ext {
+            junitJupiterVersion = '5.6.+'
+            mockitoVersion = '3.5.+'
+        }
+    }
+
+    group 'de.hype.hypeio.translation'
+    version '0.0.1-SNAPSHOT'
+}
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation 'ch.qos.logback:logback-classic:1.2.11'
+    implementation 'commons-cli:commons-cli:1.5.0'
+    implementation 'org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r'
+    implementation 'com.flipkart.zjsonpatch:zjsonpatch:0.4.13'
+    implementation 'org.apache.httpcomponents:fluent-hc:4.5.14'
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
+
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+}
+
+test {
+    useJUnitPlatform()
+}

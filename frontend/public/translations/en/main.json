@@ -1,0 +1,13 @@
+{
+	"navigation": {
+		"home": "Home",
+		"projects": "Projects <a href=\"example.com\">Test</a>",
+		"reports": "Reports"
+	},
+	"basket": {
+		"apple": "Apple",
+		"banana": "Banana",
+		"cucumber": "Cucumber",
+		"orange": "Orange"
+	}
+}

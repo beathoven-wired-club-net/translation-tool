@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%-120(%date{ISO8601} %-5level [%logger{64}] %msg) %n%rEx</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.eclipse.jgit" level="warn" additivity="false">
+		<appender-ref ref="STDOUT"/>
+	</logger>
+
+	<root level="debug">
+		<appender-ref ref="STDOUT"/>
+	</root>
+
+</configuration>

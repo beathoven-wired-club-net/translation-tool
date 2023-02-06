@@ -1,0 +1,8 @@
+{
+	"key-added": "a new {{key}} is born",
+	"navigation": {
+		"home": "Homer <i>Simpson</i>",
+		"projects": "Projects <a href=\"example.com\">Test</a>",
+		"reports": "Reports"
+	}
+}
