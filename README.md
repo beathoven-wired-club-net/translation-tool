@@ -49,8 +49,11 @@ There are two more parameters, but they are only needed to display information.
 
 ## TODO's
 
+* [ ] Extract DeepL translation key into configuration file
+* [ ] Update PDF Documentation
+* [ ] Add Java-Doc for Classes
+* [ ] Batch translations in packages of 50
 * [ ] Use translations from Google, if language is not supported by DeepL
 * [ ] Word count and changes count
-* [ ] Batch translations in packages of 50
 * [ ] Commit to Git after running the `translation-tool`
 * [ ] Handling of codes like `en-us` or `pt-br` as target language (Mapping? Needs to be defined)
