@@ -20,7 +20,7 @@ public class DeepLHelper {
 
     // private static final Logger LOG = LoggerFactory.getLogger(DeepLHelper.class);
 
-    private static final String AUTH_KEY = "fdb90dc3-4df1-511f-4c00-09c5c4e346e5:fx";
+    private static final String AUTH_KEY = "bddf179b-b8b6-d1a3-2a96-11c7cc8ac50a:fx";
 
     private static final String DEEPL_BASE_URI_FREE = "https://api-free.deepl.com";
     private static final String DEEPL_USAGE = "/v2/usage";
