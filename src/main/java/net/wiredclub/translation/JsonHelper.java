@@ -12,6 +12,12 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * A helper class that provides a few utility methods, e.g.
+ * it serializes and deserializes strings to json and back,
+ * extracts responses from DeepL and returns the desired return type,
+ * or creates patch objects.
+ */
 public class JsonHelper {
 
 	// private static final Logger LOG = LoggerFactory.getLogger(JsonHelper.class);

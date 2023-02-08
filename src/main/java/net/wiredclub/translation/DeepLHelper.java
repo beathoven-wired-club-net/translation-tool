@@ -11,6 +11,11 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * A helper class that executes requests to DeepL-API, e.g.
+ * it retrieves allowed source and target languages, usage stats,
+ * or triggers the translation of a text.
+ */
 public class DeepLHelper {
 
     // private static final Logger LOG = LoggerFactory.getLogger(DeepLHelper.class);

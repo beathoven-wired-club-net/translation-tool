@@ -19,6 +19,11 @@ import java.util.Set;
 import static net.wiredclub.translation.TranslationStatusCode.STATUS_HELP;
 import static net.wiredclub.translation.TranslationStatusCode.STATUS_INVALID_ARGUMENT;
 
+/**
+ * A helper tool for command line arguments.
+ * For specified options either the default value or the given
+ * command line argument will be used for TranslatorConfig.
+ */
 public class CommandLineHelper {
 
 	public static final String DEFAULT_TRANSLATION_DIRECTORY = "translations";

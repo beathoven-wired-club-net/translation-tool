@@ -21,6 +21,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * A helper class for file operations, e.g.
+ * it reads a text file, writes back the output, or scans the language
+ * directory for existing languages.
+ * For a GIT repo, it traverses back one commit and returns the file
+ * in its previous version.
+ */
 public class FileHelper {
 
 	// private static final Logger LOG = LoggerFactory.getLogger(FileHelper.class);

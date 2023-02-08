@@ -32,6 +32,10 @@ public class TranslationTool {
 
 	private TranslationConfig cfg;
 
+	/**
+	 * Without using CDI we instantiate all required classes here. For mocking
+	 * of some classes the second constructor is used.
+	 */
 	TranslationTool() {
 		this.jsonHelper = new JsonHelper();
 		this.deepLHelper = new DeepLHelper(jsonHelper);
@@ -39,6 +43,14 @@ public class TranslationTool {
 		this.commandLineHelper = new CommandLineHelper(deepLHelper, fileHelper);
 	}
 
+	/**
+	 * Constructor for tests.
+	 *
+	 * @param jsonHelper either real or mock class
+	 * @param deepLHelper either real or mock class
+	 * @param fileHelper either real or mock class
+	 * @param commandLineHelper either real or mock class
+	 */
 	TranslationTool(JsonHelper jsonHelper, DeepLHelper deepLHelper, FileHelper fileHelper,
 	                CommandLineHelper commandLineHelper) {
 		this.jsonHelper = jsonHelper;
@@ -68,6 +80,23 @@ public class TranslationTool {
 		return STATUS_OK;
 	}
 
+	/**
+	 * <ol>
+	 *     <li>Read source file and find differences to the previous version</li>
+	 *     <li>For every target language</li>
+	 *     <ol>
+	 *         <li>Read target file and find differences to source file</li>
+	 *         <li>Translate text and create patch operation changes between target to source</li>
+	 *         <li>Translate remaining source text changes and create patch operation for source</li>
+	 *         <li>Write output file</li>
+	 *     </ol>
+	 * </ol>
+	 *
+	 * Look at the activity diagram in documentation folder for a graphical overview.
+	 *
+	 * @throws TranslationException throws exception if translation is not possible
+	 * @throws IOException throws exception if an error during file IO occurs
+	 */
 	private void processTranslation() throws TranslationException, IOException {
 		// run information for devs
 		if (LOG.isDebugEnabled()) {
@@ -175,6 +204,19 @@ public class TranslationTool {
 		return JsonDiff.asJson(previousTranslationsJson, actualTranslationsJson);
 	}
 
+	/**
+	 * Translates target diff patch. Only add and remove operations are handled here.
+	 * Replace operation will be handled by translate source diff patch.
+	 * All other operations are not needed.
+	 *
+	 * @param diffPatch changes of source file
+	 * @param targetLanguage the target language
+	 *
+	 * @return a translation patch
+	 *
+	 * @throws TranslationException thrown if the translation patch is an invalid json
+	 * @throws IOException thrown if an error occurs during file access
+	 */
 	private JsonNode translateTargetDiffPatch(JsonNode diffPatch, String targetLanguage)
 			throws TranslationException, IOException {
 		ArrayNode translationPatch = jsonHelper.createNewTranslationPatch();
@@ -205,6 +247,18 @@ public class TranslationTool {
 		return translationPatch;
 	}
 
+	/**
+	 * Translates source diff patch. Only the replace operation is handled here.
+	 * All other operations are already handled or not needed.
+	 *
+	 * @param diffPatch changes of source file
+	 * @param targetLanguage the target language
+	 *
+	 * @return a translation patch
+	 *
+	 * @throws TranslationException thrown if the translation patch is an invalid json
+	 * @throws IOException thrown if an error occurs during file access
+	 */
 	private JsonNode translateSourceDiffPatch(JsonNode diffPatch, String targetLanguage)
 			throws TranslationException, IOException {
 		ArrayNode translationPatch = jsonHelper.createNewTranslationPatch();
@@ -215,7 +269,7 @@ public class TranslationTool {
 				// LOG.debug("command: {}", command);
 
 				String op = command.get("op").asText();
-				// for operations add, remove, move, and copy translation are not needed
+				// for operations add, remove, move, and copy translation is not needed
 				if ("replace".equals(op)) {
 					traverse(translationPatch, targetLanguage, command.get("path").asText(), command.get("value"));
 				}
@@ -225,6 +279,17 @@ public class TranslationTool {
 		return translationPatch;
 	}
 
+	/**
+	 * Recursive approach to iterate through json tree.
+	 *
+	 * @param patch operations how to change the target json will be added to the patch
+	 * @param targetLanguage the target language
+	 * @param path the path is a unique identifier. it is build from all successor field names and the actual field name.
+	 * @param jsonNode the json node to be evaluated
+	 *
+	 * @throws TranslationException thrown if an array is defined in json, or translation has an invalid json
+	 * @throws IOException thrown if an error occurs during file access
+	 */
 	private void traverse(ArrayNode patch, String targetLanguage, String path, JsonNode jsonNode)
 			throws TranslationException, IOException {
 		if (jsonNode.isObject()) {
@@ -245,6 +310,13 @@ public class TranslationTool {
 		}
 	}
 
+	/**
+	 * @param appliedTranslationPatch a json that holds all values which should be written to an output file
+	 * @param targetLanguage the desired target language
+	 *
+	 * @throws TranslationException thrown if the translation patch is an invalid json
+	 * @throws IOException thrown if an error occurs during file access
+	 */
 	private void writeTargetTranslationFile(JsonNode appliedTranslationPatch, String targetLanguage)
 			throws TranslationException, IOException {
 		try {
