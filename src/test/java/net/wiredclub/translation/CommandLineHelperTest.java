@@ -42,7 +42,7 @@ public class CommandLineHelperTest {
 		assertNotNull(translationConfig);
 		assertEquals("en", translationConfig.sourceLanguage());
 		assertEquals(Set.of("de", "fr", "nl"), translationConfig.targetLanguages());
-		assertEquals("frontend/public/translations", translationConfig.translationsDirectory());
+		assertEquals("translations", translationConfig.translationsDirectory());
 		assertEquals(".", translationConfig.repositoryDirectory());
 	}
 
@@ -86,7 +86,7 @@ public class CommandLineHelperTest {
 		assertNotNull(translationConfig);
 		assertEquals("en", translationConfig.sourceLanguage());
 		assertEquals(Set.of("de", "fr", "nl"), translationConfig.targetLanguages());
-		assertEquals("frontend/public/translations", translationConfig.translationsDirectory());
+		assertEquals("translations", translationConfig.translationsDirectory());
 		assertEquals(".", translationConfig.repositoryDirectory());
 	}
 
@@ -101,7 +101,7 @@ public class CommandLineHelperTest {
 		TranslationException thrownException =
 				assertThrows(TranslationException.class, () -> commandLineHelperMock.getTranslationConfig(invalidArgs));
 
-		assertEquals("de.hype.hypeio.translation.TranslationException", thrownException.getClass().getName());
+		assertEquals("net.wiredclub.translation.TranslationException", thrownException.getClass().getName());
 		assertEquals(STATUS_INVALID_ARGUMENT, thrownException.statusCode());
 
 		verify(commandLineHelperMock, times(1)).displayHelp(any());

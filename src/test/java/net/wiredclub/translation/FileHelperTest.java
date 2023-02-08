@@ -14,8 +14,8 @@ public class FileHelperTest {
 
 	@Test
 	void testReadPreviousFileFromHistory() throws IOException, TranslationFileNotFoundException {
-		String fileName = "frontend/public/translations/en/main.json";
-		String file = new FileHelper().readPreviousFileFromHistory("../..", fileName, 1);
+		String fileName = "translations/en/main.json";
+		String file = new FileHelper().readPreviousFileFromHistory(".", fileName, 1);
 
 		assertNotNull(file);
 		// LOG.info("{}: {}", fileName, file);
@@ -26,9 +26,9 @@ public class FileHelperTest {
 		String fileName = "not found";
 
 		TranslationFileNotFoundException thrownException = assertThrows(TranslationFileNotFoundException.class,
-				() -> new FileHelper().readPreviousFileFromHistory("../..", fileName, 1));
+				() -> new FileHelper().readPreviousFileFromHistory(".", fileName, 1));
 
-		assertEquals("de.hype.hypeio.translation.TranslationFileNotFoundException", thrownException.getClass().getName());
+		assertEquals("net.wiredclub.translation.TranslationFileNotFoundException", thrownException.getClass().getName());
 		assertEquals("not found", thrownException.getMessage());
 	}
 }

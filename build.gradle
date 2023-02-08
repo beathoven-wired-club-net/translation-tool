@@ -4,7 +4,7 @@ plugins {
 }
 
 application {
-    getMainClass().set("de.hype.hypeio.translation.TranslationTool")
+    getMainClass().set("net.wiredclub.translation.TranslationTool")
 }
 
 allprojects {
@@ -15,7 +15,7 @@ allprojects {
         }
     }
 
-    group 'de.hype.hypeio.translation'
+    group 'net.wiredclub.translation'
     version '0.0.1-SNAPSHOT'
 }
 

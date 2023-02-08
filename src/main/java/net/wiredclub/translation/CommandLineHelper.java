@@ -152,7 +152,7 @@ public class CommandLineHelper {
 						+ "https://www.deepl.com/translator and stored for each target language(s). The order of "
 						+ "existing keys is preserved, but new keys are added at the end of the target file.\n\n";
 
-		String footer = "\nExample: translation-tool -s en -t de -p \"frontend/public/translations\" -r .";
+		String footer = "\nExample: translation-tool -s en -t de -p \"translations\" -r .";
 
 		HelpFormatter formatter = new HelpFormatter();
 		formatter.setOptionComparator(null);

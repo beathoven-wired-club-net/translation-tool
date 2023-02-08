@@ -14,7 +14,7 @@ public class JsonHelperTest {
 		TranslationJsonProcessingException thrownException = assertThrows(TranslationJsonProcessingException.class,
 				() -> new JsonHelper().convertStringToJson("kein json"));
 
-		assertEquals("de.hype.hypeio.translation.TranslationJsonProcessingException",
+		assertEquals("net.wiredclub.translation.TranslationJsonProcessingException",
 				thrownException.getClass().getName());
 		// LOG.info(thrownException.getMessage());
 	}

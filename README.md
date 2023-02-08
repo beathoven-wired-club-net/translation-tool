@@ -17,7 +17,7 @@ The tool is controlled with four parameters. An example call could look like:
 2. The parameter `-t` or `--target` specifies the target language. If you omit it, translation will be done for all 
    languages that are in the same parent folder as the source language.
 3. The `-p` or `--path` parameter specifies the parent folder. If the parameter is omitted, 
-   `frontend/public/translations` is assumed as the default path.
+   `translations` is assumed as the default path.
 4. The repository is set with parameter `-r` or `--repo`. The parameter is required if the tool is started outside 
    of its main directory. If omitted, the current directory is assumed as the repository root.
 
