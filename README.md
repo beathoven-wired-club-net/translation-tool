@@ -50,8 +50,8 @@ There are two more parameters, but they are only needed to display information.
 ## TODO's
 
 * [ ] Extract DeepL translation key into configuration file
-* [ ] Update PDF Documentation
-* [ ] Add Java-Doc for Classes
+* [x] Update PDF Documentation
+* [x] Add Java-Doc for Classes
 * [ ] Batch translations in packages of 50
 * [ ] Use translations from Google, if language is not supported by DeepL
 * [ ] Word count and changes count
